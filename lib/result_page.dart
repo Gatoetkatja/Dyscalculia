@@ -57,9 +57,9 @@ class _DiskalkuliaResultScreenState extends State<DiskalkuliaResultScreen>
   ];
 
   final List<Map<String, dynamic>> result = [
-    {'value': 'Kamu kemungkinan normal', 'color': Colors.green},
+    {'value': 'Kamu kemungkinan normal', 'color': Colors.lightGreen},
     { 'value': 'KEMUNGKINAN kemungkinan DISKALKULIA', 'color': Colors.red},
-    { 'value': 'kemu kemungkinan memiliki skill aritmatika yang buruk', 'color': Colors.blue},
+    { 'value': 'kemu kemungkinan memiliki skill aritmatika yang buruk', 'color': Colors.orange},
   ];
 
   @override
@@ -239,7 +239,7 @@ class _DiskalkuliaResultScreenState extends State<DiskalkuliaResultScreen>
                             padding: EdgeInsets.all(24),
                             decoration: BoxDecoration(
                               gradient: LinearGradient(
-                                colors: [Color(0xFF4299E1), Color(0xFF3182CE)],
+                                colors: [result[0]['color'], result[0]['color']],
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                               ),
@@ -252,7 +252,11 @@ class _DiskalkuliaResultScreenState extends State<DiskalkuliaResultScreen>
                                 ),
                               ],
                             ),
-                            child: Column(
+                            child: LayoutBuilder(
+                              builder: (context, constraints) {
+                                double containerWidth = constraints.maxWidth;
+
+                                return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
@@ -269,7 +273,7 @@ class _DiskalkuliaResultScreenState extends State<DiskalkuliaResultScreen>
                                 Container(
                                   height: 40,
                                   decoration: BoxDecoration(
-                                    color: Colors.white.withOpacity(0.2),
+                                    color: Colors.transparent.withOpacity(0.2),
                                     borderRadius: BorderRadius.circular(20),
                                   ),
                                   child: Stack(
@@ -278,11 +282,11 @@ class _DiskalkuliaResultScreenState extends State<DiskalkuliaResultScreen>
                                         animation: _chartAnimation,
                                         builder: (context, child) {
                                           return Container(
-                                            width: MediaQuery.of(context).size.width * 0.185 * _chartAnimation.value,
+                                            width: containerWidth * 0.05 * _chartAnimation.value,
                                             height: 40,
                                             decoration: BoxDecoration(
                                               gradient: LinearGradient(
-                                                colors: [Colors.white, Colors.white10],
+                                                colors: [Colors.white, const Color.fromARGB(255, 184, 184, 184)],
                                               ),
                                               borderRadius: BorderRadius.circular(20),
                                             ),
@@ -296,9 +300,9 @@ class _DiskalkuliaResultScreenState extends State<DiskalkuliaResultScreen>
                                           animation: _chartAnimation,
                                           builder: (context, child) {
                                             return Text(
-                                              '${(18.5 * _chartAnimation.value).toInt()}%',
+                                              '${5 *(_chartAnimation.value).toInt()}%',
                                               style: TextStyle(
-                                                color: Colors.white,
+                                                color: Colors.grey,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16,
                                               ),
@@ -311,7 +315,7 @@ class _DiskalkuliaResultScreenState extends State<DiskalkuliaResultScreen>
                                 ),
                                 
                                 SizedBox(height: 20),
-
+                                Text(result[0]['value'], style: TextStyle(color: Colors.white),), //********************************* */
                                 SizedBox(height: 20),
                                 
                                 Container(
@@ -342,7 +346,8 @@ class _DiskalkuliaResultScreenState extends State<DiskalkuliaResultScreen>
                                   ),
                                 ),
                               ],
-                            ),
+                            );
+                              },)
                           ),
                         ),
                         
