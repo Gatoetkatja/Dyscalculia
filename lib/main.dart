@@ -1,4 +1,6 @@
 import 'package:discalculia/main_page.dart';
+import 'package:discalculia/page/explained_subtes.dart';
+import 'package:discalculia/page/konsultasi.dart';
 import 'package:discalculia/question_page.dart';
 import 'package:discalculia/srt_question_screen.dart';
 import 'package:discalculia/widgets/dot_enum.dart';
@@ -10,7 +12,7 @@ import 'package:discalculia/questions_page.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: RandomDotsDemo(),) // ganti dari QuizQuestionPage()
+    home: Scaffold(body: DemoSubtestScreen(),),) // ganti dari QuizQuestionPage()
   );
 }
 
