@@ -5,14 +5,14 @@ import 'package:discalculia/question_page.dart';
 import 'package:discalculia/srt_question_screen.dart';
 import 'package:discalculia/widgets/dot_enum.dart';
 import 'package:discalculia/widgets/perbandingan.dart';
-import 'package:discalculia/widgets/tes_widget.dart';
+import 'package:discalculia/page/edit_profil.dart';
 import 'package:flutter/material.dart';
 import 'package:discalculia/questions_page.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Scaffold(body: DemoSubtestScreen(),),) // ganti dari QuizQuestionPage()
+    home: Scaffold(body: DemoSubtestRangeScreen(),),) // ganti dari QuizQuestionPage()
   );
 }
 
